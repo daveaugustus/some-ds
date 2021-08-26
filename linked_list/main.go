@@ -1,25 +1,36 @@
 package main
 
+import "fmt"
+
 type Node struct {
-	prev *Node
-	next *Node
-	key  interface{}
+	property int
+	nextNode *Node
 }
 
-type List struct {
-	head *Node
-	tail *Node
+type LinkedList struct {
+	headNode *Node
 }
 
-func (l *List) Insert(key interface{}) {
-	list := &Node{
-		next: l.head,
-		key:  key,
+func (l *LinkedList) AddToHead(prop int) {
+	node := Node{
+		property: prop,
+	}
+	if node.nextNode == nil {
+		node.nextNode = l.headNode
 	}
 
-	if l.head != nil {
-		l.head.prev = list
-	}
+	l.headNode = &node
 }
 
-func main() {}
+func (ll *LinkedList) Display() {
+	for i := ll.headNode; i != nil; i = i.nextNode {
+		fmt.Println(i.property)
+	}
+}
+func main() {
+	ll := &LinkedList{}
+	ll.AddToHead(1)
+	ll.AddToHead(2)
+	ll.AddToHead(3)
+	ll.Display()
+}
