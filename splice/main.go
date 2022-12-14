@@ -6,7 +6,7 @@
 // EX:
 // exArr := []int{16, 15, 27, 9}
 // expectStrResult := "15" + "16" + "27" + "9"
-// smallest nubmer
+// smallest number
 // expectNumResult := 1516279
 
 package main
